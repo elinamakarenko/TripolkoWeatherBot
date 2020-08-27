@@ -1,1 +1,1 @@
-worker: java -cp target\Tripolko_weatherbot-0.0.1-SNAPSHOT.jar Main
+web: java -cp target\Tripolko_weatherbot-0.0.1-SNAPSHOT.jar Main
