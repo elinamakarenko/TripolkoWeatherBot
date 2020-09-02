@@ -10,55 +10,80 @@ import org.telegram.telegrambots.exceptions.TelegramApiException;
 public class Bot extends TelegramLongPollingBot {
 
   public void onUpdateReceived(Update update) {
-	  String text="";
-	  // �������� ��������� �� �������� � �������� �� ���
-    if(update.hasMessage()&&update.getMessage().hasText()) {
-    	text = update.getMessage().getText();
-    	long chat_id = update.getMessage().getChatId();
-    	System.out.println(text); 
-    	SendMessage mes = new SendMessage().setChatId(chat_id).setText(text);
-    	
-    	
-    	if(text.equals("/help")) {
-    	text="This bot shows current weather conditions";
-    	mes.setChatId(chat_id).setText(text);
-    	try {
-    		
-			execute(mes);
-			System.out.println(text); 
-		} catch (TelegramApiException e) {
+//	  String text="";
+//	  // �������� ��������� �� �������� � �������� �� ���
+//    if(update.hasMessage()&&update.getMessage().hasText()) {
+//    	text = update.getMessage().getText();
+//    	long chat_id = update.getMessage().getChatId();
+//    	System.out.println(text); 
+//    	SendMessage mes = new SendMessage().setChatId(chat_id).setText(text);
+//    	
+//    	
+//    	if(text.equals("/help")) {
+//    	text="This bot shows current weather conditions";
+//    	mes.setChatId(chat_id).setText(text);
+//    	try {
+//    		
+//			execute(mes);
+//			System.out.println(text); 
+//		} catch (TelegramApiException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    	}else {
+//    		
+//    		String weather="";
+//    		
+//    		try {
+//				weather=Weather.getWeather(text);
+//				System.out.println(weather);
+//				//execute(weather);
+////				ByteBuffer buffer = StandardCharsets.UTF_8.encode("weather"); 
+////				 
+////				String utf8EncodedString = StandardCharsets.UTF_8.decode(buffer).toString();
+////				System.out.println(utf8EncodedString);
+//    		} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//		    	System.out.println("Wrong city name!"); 
+//				e.printStackTrace();
+//			}
+//    		mes.setChatId(chat_id).setText(weather);
+//        	try {
+//    			execute(mes);
+//    			//System.out.println(text); 
+//    		} catch (TelegramApiException e) {
+//    			// TODO Auto-generated catch block
+//    			e.printStackTrace();
+//    		}
+//    	}
+//    }
+//    
+//   
+	  if(update.hasMessage()&&update.getMessage().hasText()) {
+		     String text = update.getMessage().getText();
+		     long chat_id = update.getMessage().getChatId();
+		     SendMessage mes = new SendMessage();
+		   try {
+		   if(text.equals("/help")) {
+			   mes.setChatId(chat_id).setText("This bot shows current weather conditions");
+		    execute(mes);
+		   } else {
+		    String weather= Weather.getWeather(text);
+		    mes.setChatId(chat_id).setText(weather);
+		    execute(mes);
+		   }
+		  } catch (TelegramApiException e) {
+		   // TODO Auto-generated catch block
+		   e.printStackTrace();
+		  } catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	}else {
-    		
-    		String weather="";
-    		
-    		try {
-				weather=Weather.getWeather(text);
-				System.out.println(weather);
-				//execute(weather);
-//				ByteBuffer buffer = StandardCharsets.UTF_8.encode("weather"); 
-//				 
-//				String utf8EncodedString = StandardCharsets.UTF_8.decode(buffer).toString();
-//				System.out.println(utf8EncodedString);
-    		} catch (IOException e) {
-				// TODO Auto-generated catch block
-		    	System.out.println("Wrong city name!"); 
-				e.printStackTrace();
-			}
-    		mes.setChatId(chat_id).setText(weather);
-        	try {
-    			execute(mes);
-    			//System.out.println(text); 
-    		} catch (TelegramApiException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    		}
-    	}
-    }
-    
-   
+
+		     
+		      
+		      
+		    }
   }
 
   public String getBotUsername() {
