@@ -33,7 +33,7 @@ public class Bot extends TelegramLongPollingBot {
     		
     		try {
 				weather=Weather.getWeather(text);
-				System.out.println("weather");
+				System.out.println(weather);
     		} catch (IOException e) {
 				// TODO Auto-generated catch block
 		    	System.out.println("Wrong city name!"); 
