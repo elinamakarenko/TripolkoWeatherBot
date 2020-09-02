@@ -21,10 +21,10 @@ public class Bot extends TelegramLongPollingBot {
     	
     	if(text.equals("/help")) {
     	text="This bot shows current weather conditions";
-    //	mes.setChatId(chat_id).setText(text);
+    	mes.setChatId(chat_id).setText(text);
     	try {
-    		sendMessage(mes);
-			//execute(mes);
+    		
+			execute(mes);
 			System.out.println(text); 
 		} catch (TelegramApiException e) {
 			// TODO Auto-generated catch block
@@ -37,7 +37,7 @@ public class Bot extends TelegramLongPollingBot {
     		try {
 				weather=Weather.getWeather(text);
 				System.out.println(weather);
-				sendMessage(weather);
+				//execute(weather);
 //				ByteBuffer buffer = StandardCharsets.UTF_8.encode("weather"); 
 //				 
 //				String utf8EncodedString = StandardCharsets.UTF_8.decode(buffer).toString();
