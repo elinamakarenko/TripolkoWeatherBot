@@ -16,14 +16,15 @@ public class Bot extends TelegramLongPollingBot {
     	text = update.getMessage().getText();
     	long chat_id = update.getMessage().getChatId();
     	System.out.println(text); 
-    	SendMessage mes = new SendMessage();
+    	SendMessage mes = new SendMessage().setChatId(chat_id).setText(text);
     	
     	
     	if(text.equals("/help")) {
     	text="This bot shows current weather conditions";
-    	mes.setChatId(chat_id).setText(text);
+    //	mes.setChatId(chat_id).setText(text);
     	try {
-			execute(mes);
+    		sendMessage(mes);
+			//execute(mes);
 			System.out.println(text); 
 		} catch (TelegramApiException e) {
 			// TODO Auto-generated catch block
@@ -35,11 +36,12 @@ public class Bot extends TelegramLongPollingBot {
     		
     		try {
 				weather=Weather.getWeather(text);
-				System.out.println("weather");
-				ByteBuffer buffer = StandardCharsets.UTF_8.encode("weather"); 
-				 
-				String utf8EncodedString = StandardCharsets.UTF_8.decode(buffer).toString();
-				System.out.println(utf8EncodedString);
+				System.out.println(weather);
+				sendMessage(weather);
+//				ByteBuffer buffer = StandardCharsets.UTF_8.encode("weather"); 
+//				 
+//				String utf8EncodedString = StandardCharsets.UTF_8.decode(buffer).toString();
+//				System.out.println(utf8EncodedString);
     		} catch (IOException e) {
 				// TODO Auto-generated catch block
 		    	System.out.println("Wrong city name!"); 
