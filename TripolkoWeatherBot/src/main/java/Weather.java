@@ -37,11 +37,8 @@ public class Weather {
 		String tempStr=temp+"";
 		double humidity = (Double)mainMap.get("humidity");
 		String humidityStr=humidity+"";
-		weather="Weather in "+city+": "+tempStr+", "+humidity+"%";
-		
-		
+		weather="Weather in "+city+": "+tempStr+", "+humidityStr+"%";
 		return weather;
-
 	}
 }
 
