@@ -34,8 +34,10 @@ public class Weather {
 		Map<String, Object> resMap=jsonToMap(result.toString());
 		Map<String, Object> mainMap=jsonToMap(resMap.get("main").toString());
 		int temp = (int)((Double)mainMap.get("temp")-273);
+		String tempStr=temp+"";
 		double humidity = (Double)mainMap.get("humidity");
-		weather="Weather in "+city+": "+temp+", "+humidity+"%";
+		String humidityStr=humidity+"";
+		weather="Weather in "+city+": "+tempStr+", "+humidity+"%";
 		
 		
 		return weather;
