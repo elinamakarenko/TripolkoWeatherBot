@@ -1,1 +1,1 @@
-web: java -cp target\TripolkoWeatherBot.jar Main
+web: java $JAVA_OPTS -cp  target\TripolkoWeatherBot.jar Main
