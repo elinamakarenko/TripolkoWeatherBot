@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
@@ -34,6 +36,10 @@ public class Bot extends TelegramLongPollingBot {
     		try {
 				weather=Weather.getWeather(text);
 				System.out.println("weather");
+				ByteBuffer buffer = StandardCharsets.UTF_8.encode("weather"); 
+				 
+				String utf8EncodedString = StandardCharsets.UTF_8.decode(buffer).toString();
+				System.out.println(utf8EncodedString);
     		} catch (IOException e) {
 				// TODO Auto-generated catch block
 		    	System.out.println("Wrong city name!"); 
