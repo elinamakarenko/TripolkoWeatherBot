@@ -9,7 +9,7 @@ public class Bot extends TelegramLongPollingBot {
 
   public void onUpdateReceived(Update update) {
 	  String text="";
-	  // получает ссобщения от Телеграм и отвечает на них
+	  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ
     if(update.hasMessage()&&update.getMessage().hasText()) {
     	text = update.getMessage().getText();
     	long chat_id = update.getMessage().getChatId();
@@ -33,7 +33,7 @@ public class Bot extends TelegramLongPollingBot {
     		
     		try {
 				weather=Weather.getWeather(text);
-				System.out.println(weather);
+				System.out.println("weather");
     		} catch (IOException e) {
 				// TODO Auto-generated catch block
 		    	System.out.println("Wrong city name!"); 
